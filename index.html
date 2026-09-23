@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المرافق التربوي الرقمي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-mark">مر</span>
+      <div class="brand-text">
+        <h1>المرافق التربوي الرقمي</h1>
+        <p>فضاء رقمي لمعلمي تونس</p>
+      </div>
+    </div>
+    <div class="header-status" id="headerStatus">
+      <span id="userGreeting" class="hidden"></span>
+      <button id="logoutBtn" class="link-btn hidden">تسجيل الخروج</button>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <button class="nav-item active" data-tab="home">الرئيسية</button>
+    <button class="nav-item" data-tab="signup">إنشاء حساب</button>
+    <button class="nav-item" data-tab="login">تسجيل الدخول</button>
+    <button class="nav-item" data-tab="news">مستجدات تربوية</button>
+    <button class="nav-item" data-tab="contact">اتصل بنا</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- الرئيسية -->
+  <section class="tab-panel active" id="tab-home">
+    <div class="hero">
+      <p class="hero-eyebrow">للمعلم التونسي، خطوة بخطوة</p>
+      <h2>مرافقك في تسجيل تلاميذك، ومتابعة مستواهم، وتخفيف عبء التوثيق</h2>
+      <p class="hero-lede">
+        سجّل أقسامك وتلاميذك، تابع تطورهم، واطّلع على مستجدات تربوية موثوقة —
+        كل هذا من هاتفك، بلا تعقيد.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" data-goto="signup">أنشئ حسابك الآن</button>
+        <button class="btn btn-ghost" data-goto="login">عندي حساب بالفعل</button>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature">
+        <span class="feature-num">01</span>
+        <h3>تسجيل التلاميذ</h3>
+        <p>أضف أقسامك وأسماء تلاميذك وتواريخ ميلادهم، واحصل على ملف منسّق لكل قسم.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-num">02</span>
+        <h3>متابعة المستوى</h3>
+        <p>قارن كل تقييم بسابقه، وتابع تطور القسم ككل عبر الزمن.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-num">03</span>
+        <h3>مستجدات موثوقة</h3>
+        <p>كل ما يُنشر هنا يُراجعه مدير الموقع شخصيًا قبل النشر.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- إنشاء حساب -->
+  <section class="tab-panel" id="tab-signup">
+    <div class="form-card">
+      <h2>إنشاء حساب معلم</h2>
+      <p class="form-sub">كل الحقول مطلوبة ما عدا البريد الإلكتروني.</p>
+      <form id="signupForm" novalidate>
+        <label>الحالة المدنية
+          <select name="civilStatus" required>
+            <option value="" disabled selected>اختر</option>
+            <option value="أستاذ">أستاذ</option>
+            <option value="أستاذة">أستاذة</option>
+          </select>
+        </label>
+        <label>الاسم واللقب
+          <input type="text" name="fullName" required placeholder="مثال: محمد بن علي">
+        </label>
+        <label>المدرسة
+          <input type="text" name="school" required placeholder="اسم المدرسة">
+        </label>
+        <label>الهاتف
+          <input type="tel" name="phone" required placeholder="12345678" pattern="[0-9]{8}" maxlength="8">
+        </label>
+        <label>البريد الإلكتروني <span class="optional">(اختياري)</span>
+          <input type="email" name="email" placeholder="example@mail.com">
+        </label>
+        <label>كلمة العبور
+          <input type="password" name="password" required minlength="6" placeholder="6 خانات على الأقل">
+        </label>
+        <p class="form-msg" id="signupMsg"></p>
+        <button type="submit" class="btn btn-primary btn-block">إنشاء الحساب</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- تسجيل الدخول -->
+  <section class="tab-panel" id="tab-login">
+    <div class="form-card">
+      <h2>تسجيل الدخول</h2>
+      <form id="loginForm" novalidate>
+        <label>الاسم واللقب
+          <input type="text" name="fullName" required placeholder="كما سجّلته عند الاشتراك">
+        </label>
+        <label>كلمة العبور
+          <input type="password" name="password" required placeholder="كلمة العبور">
+        </label>
+        <p class="form-msg" id="loginMsg"></p>
+        <button type="submit" class="btn btn-primary btn-block">دخول</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- مستجدات تربوية -->
+  <section class="tab-panel" id="tab-news">
+    <div class="news-head">
+      <h2>مستجدات تربوية</h2>
+      <button id="showAddNews" class="btn btn-secondary hidden">إضافة مستجد</button>
+    </div>
+
+    <div class="form-card hidden" id="addNewsCard">
+      <form id="newsForm" novalidate>
+        <label>عنوان المستجد
+          <input type="text" name="title" required>
+        </label>
+        <label>التفاصيل
+          <textarea name="body" rows="4" required></textarea>
+        </label>
+        <p class="form-msg" id="newsMsg"></p>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">نشر</button>
+          <button type="button" class="btn btn-ghost" id="cancelNews">إلغاء</button>
+        </div>
+      </form>
+    </div>
+
+    <ul class="news-list" id="newsList">
+      <li class="news-empty">جارٍ التحميل…</li>
+    </ul>
+  </section>
+
+  <!-- اتصل بنا -->
+  <section class="tab-panel" id="tab-contact">
+    <div class="form-card">
+      <h2>اتصل بنا</h2>
+      <p class="form-sub">رسالتك تصل مباشرة إلى مدير الموقع.</p>
+      <form id="contactForm" novalidate>
+        <label>الاسم
+          <input type="text" name="name" required>
+        </label>
+        <label>البريد الإلكتروني
+          <input type="email" name="email" required>
+        </label>
+        <label>الرسالة
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <p class="form-msg" id="contactMsg"></p>
+        <button type="submit" class="btn btn-primary btn-block">إرسال</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>المرافق التربوي الرقمي — مدير الموقع: السيد خالد الأحمر</p>
+</footer>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<!-- EmailJS (اختياري لإرسال "اتصل بنا") -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script src="firebase-config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
